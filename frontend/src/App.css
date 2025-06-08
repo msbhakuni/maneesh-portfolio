@@ -40,3 +40,93 @@
 .read-the-docs {
   color: #888;
 }
+
+/* src/App.css */
+
+/* Basic body styles for consistent background and font */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(to bottom right, #111827, #374151); /* from-gray-900 to-gray-700 equivalent */
+  color: #f9fafb; /* gray-100 equivalent */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem; /* p-4 equivalent */
+}
+
+/* Styles for the main content box */
+.content-box {
+  background-color: #1f2937; /* gray-800 equivalent */
+  padding: 2rem; /* p-8 equivalent */
+  border-radius: 1rem; /* rounded-xl equivalent */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2); /* shadow-2xl equivalent */
+  text-align: center;
+  max-width: 48rem; /* max-w-2xl equivalent */
+  width: 100%;
+}
+
+/* Styles for the welcome heading */
+.welcome-heading {
+  font-size: 3rem; /* text-5xl equivalent */
+  font-weight: 800; /* font-extrabold */
+  margin-bottom: 0.5rem; /* mb-4 equivalent */
+  background: linear-gradient(to right, #60a5fa, #a855f7); /* from-blue-400 to-purple-600 */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@media (min-width: 768px) {
+  .welcome-heading {
+    font-size: 4rem; /* md:text-6xl equivalent */
+  }
+}
+
+/* Styles for the subtitle */
+.subtitle {
+  font-size: 1.25rem; /* text-xl equivalent */
+  margin-bottom: 2rem; /* mb-8 equivalent */
+  color: #d1d5db; /* gray-300 equivalent */
+}
+
+@media (min-width: 768px) {
+  .subtitle {
+    font-size: 1.5rem; /* md:text-2xl equivalent */
+  }
+}
+
+/* Styles for the navigation buttons container */
+.nav-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem; /* gap-4 equivalent */
+}
+
+/* Styles for individual navigation buttons */
+.nav-button {
+  padding: 0.75rem 1.5rem; /* px-6 py-3 equivalent */
+  background-color: #2563eb; /* blue-600 equivalent */
+  color: white;
+  font-weight: 600; /* font-semibold */
+  border-radius: 0.5rem; /* rounded-lg equivalent */
+  transition: all 0.3s ease-in-out;
+  text-transform: none; /* Prevent uppercase default for MUI Button */
+}
+
+.nav-button:hover {
+  background-color: #1d4ed8; /* blue-700 equivalent */
+  transform: scale(1.05);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15); /* shadow-md equivalent */
+}
+
+/* Footer styles */
+.footer-text {
+  margin-top: 3rem; /* mt-6 equivalent */
+  color: #9ca3af; /* gray-400 equivalent */
+  font-size: 0.875rem; /* text-sm equivalent */
+}
