@@ -1,10 +1,11 @@
 import HomePage from './pages/HomePage'
+import ResumePage from './pages/ResumePage'
 
 function App() {
 
   return (
     <>
-      <HomePage />
+      <ResumePage />
     </>
   )
 }
