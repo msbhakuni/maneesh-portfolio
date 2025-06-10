@@ -1,6 +1,7 @@
 import React from 'react';
-import { Box, Typography, Button } from '@mui/material';
+import { Box, Button } from '@mui/material';
 import { styled } from '@mui/system';
+import { useNavigate } from 'react-router-dom';
 
 // Styled Box for the content area to match your existing design
 // This component provides the background, padding, border-radius, and shadow
@@ -34,8 +35,8 @@ const PDFViewer = styled('iframe')({
 
 // ResumePage component displays a welcome message, a download button, and an embedded PDF.
 const ResumePage: React.FC = () => {
-  // Path to the PDF in the assets folder (Vite will copy it to dist)
   const resumePath = '/src/assets/Maneesh_Resume.pdf';
+  const navigate = useNavigate();
 
   return (
     // Outer Box for the entire page, providing the background gradient and centering
@@ -52,33 +53,20 @@ const ResumePage: React.FC = () => {
       }}
     >
       {/* The main container for the resume content */}
-      <ResumeContainer sx={{ mx: { xs: 2, sm: 4, md: 8 } }}>
-        {/* Page Title */}
-        <Typography
-          variant="h4" // Material-UI heading variant
-          component="h2" // Semantic HTML tag for the heading
-          sx={{
-            fontWeight: 'bold', // Bold font weight
-            mb: 2, // Margin bottom for spacing
-            background: 'linear-gradient(to right, #60a5fa, #a855f7)', // Gradient text color
-            WebkitBackgroundClip: 'text', // Clip background to text shape
-            WebkitTextFillColor: 'transparent', // Make text transparent to show background
-          }}
-        >
-          My Resume
-        </Typography>
-
-        {/* Introductory text */}
-        <Typography variant="body1" sx={{ mb: 2, color: '#d1d5db' }}>
-          You can preview and download my resume below.
-        </Typography>
-
+      <ResumeContainer sx={{ mx: { xs: 2, sm: 4, md: 8 }, mt: 0 }}>
         {/* Download Button */}
         <Button
           variant="contained"
           color="primary"
-          href={resumePath}
-          download="Maneesh_Resume.pdf"
+          onClick={() => {
+            const link = document.createElement('a');
+            link.href = resumePath;
+            link.download = 'Maneesh_Resume.pdf';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            navigate('/'); // Redirect to homepage after download
+          }}
           sx={{ mb: 3, fontWeight: 'bold', borderRadius: 2, textTransform: 'none', px: 4, py: 1.5 }}
         >
           Download Resume

@@ -7,6 +7,7 @@ import SkillPage from "./SkillPage";
 import EducationPage from "./EducationPage";
 import ContactPage  from "./ContactPage";
 import ResumePage from "./ResumePage";
+import ResumeFullPage from "./ResumeFullPage";
 
 export const router = createBrowserRouter([
     {
@@ -21,6 +22,7 @@ export const router = createBrowserRouter([
             {path:'education', element:<EducationPage/>},
             {path:'contact', element:<ContactPage/>},
             {path:'resume', element:<ResumePage/>},
+            {path:'resume-full', element:<ResumeFullPage/>},
             {path:'*', element:<Navigate replace to='/not-found'/>}
         ]
     }
