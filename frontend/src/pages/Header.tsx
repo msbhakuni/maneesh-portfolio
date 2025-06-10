@@ -39,7 +39,10 @@ const Header: React.FC = () => {
 
   // Handler for the resume button click
   const handleDownloadResumeClick = () => {
-    navigate('/resume'); // Navigate to the ResumePage
+    // Only navigate if not already on /resume
+    if (window.location.pathname !== '/resume') {
+      navigate('/resume');
+    }
   };
 
   return (
@@ -91,7 +94,7 @@ const Header: React.FC = () => {
               py: 0.5,
               px: 1.5,
             }}
-            onClick={handleDownloadResumeClick} // Now navigates to /resume
+            onClick={handleDownloadResumeClick} // Prevents navigation loop
           >
             Download Resume
           </Button>
