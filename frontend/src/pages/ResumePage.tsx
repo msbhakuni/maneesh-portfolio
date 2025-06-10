@@ -15,7 +15,7 @@ const PDFViewer = styled('iframe')({
 
 // ResumePage component displays a welcome message, a download button, and an embedded PDF.
 const ResumePage: React.FC = () => {
-  const resumePath = '/src/assets/Maneesh_Resume.pdf';
+  const resumePath = '/Maneesh_Resume.pdf'; // Use public folder path for production
 
   return (
     <Box
