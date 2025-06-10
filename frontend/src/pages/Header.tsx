@@ -19,6 +19,7 @@ import CodeIcon from '@mui/icons-material/Code'; // Icon for Skills
 import SchoolIcon from '@mui/icons-material/School'; // Icon for Education
 import ContactMailIcon from '@mui/icons-material/ContactMail'; // Icon for Contact
 import { useNavigate } from 'react-router-dom';
+import profilePic from '../assets/profilepic.jpg'; // Importing the profile picture
 
 const drawerWidth = 240; // Increased width for the header/sidebar
 
@@ -70,8 +71,8 @@ const Header: React.FC = () => {
         >
           <Avatar
             alt="Maneesh Bhakuni"
-            src="https://placehold.co/120x120/E0E0E0/3F51B5?text=MB" // Placeholder image for the avatar
-            sx={{ width: 96, height: 96, mb: 1, border: '2px solid white' }} // Increased width and height for larger avatar
+            src={profilePic} // Set the imported profile picture as the Avatar source
+            sx={{ width: 128, height: 128, mb: 1, border: '3px solid white' }} // Made avatar bigger and border thicker
           />
           <Typography variant="h6" sx={{ fontWeight: 'medium', color: 'white' }}>
             Maneesh Bhakuni
