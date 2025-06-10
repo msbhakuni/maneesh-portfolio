@@ -10,7 +10,8 @@ import {
   ListItemText,
   ListItemIcon,
   Avatar, // Import Avatar for the profile picture
-  Divider, // Import Divider for horizontal separation
+  Divider,
+  Button, // Import Divider for horizontal separation
 } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
 import WorkIcon from '@mui/icons-material/Work'; // Icon for Experience
@@ -18,6 +19,7 @@ import FolderSpecialIcon from '@mui/icons-material/FolderSpecial'; // Icon for P
 import CodeIcon from '@mui/icons-material/Code'; // Icon for Skills
 import SchoolIcon from '@mui/icons-material/School'; // Icon for Education
 import ContactMailIcon from '@mui/icons-material/ContactMail'; // Icon for Contact
+import CloudDownloadIcon from '@mui/icons-material/CloudDownload'; // Icon for Download Resume
 import { useNavigate } from 'react-router-dom';
 import profilePic from '../assets/profilepic.jpg'; // Importing the profile picture
 
@@ -34,6 +36,11 @@ const Header: React.FC = () => {
     { text: 'Education', icon: <SchoolIcon />, path: '/education' },
     { text: 'Contact', icon: <ContactMailIcon />, path: '/contact' },
   ];
+
+  // Handler for the resume button click
+  const handleDownloadResumeClick = () => {
+    navigate('/resume'); // Navigate to the ResumePage
+  };
 
   return (
     <Box sx={{ display: 'flex' }}>
@@ -58,6 +65,38 @@ const Header: React.FC = () => {
           },
         }}
       >
+        {/* Download Resume Button Section */}
+        <Box
+          sx={{
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'flex-end', // Aligns content to the right
+            mb: 2,
+            pr: 1, // Padding right for spacing from the edge
+          }}
+        >
+          <Button
+            variant="outlined"
+            startIcon={<CloudDownloadIcon />} // Changed icon to a download icon
+            sx={{
+              color: 'white',
+              borderColor: 'white',
+              '&:hover': {
+                borderColor: 'rgba(255,255,255,0.7)',
+                backgroundColor: 'rgba(255,255,255,0.1)',
+              },
+              borderRadius: '8px',
+              textTransform: 'none',
+              fontSize: '0.875rem',
+              py: 0.5,
+              px: 1.5,
+            }}
+            onClick={handleDownloadResumeClick} // Now navigates to /resume
+          >
+            Download Resume
+          </Button>
+        </Box>
+        {/* End Download Resume Button Section */}
         {/* Profile Picture and Name Section */}
         <Box
           sx={{

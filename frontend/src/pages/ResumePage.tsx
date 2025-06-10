@@ -1,7 +1,6 @@
 import React from 'react';
-import { Box, Typography, IconButton } from '@mui/material';
+import { Box, Typography, Button } from '@mui/material';
 import { styled } from '@mui/system';
-import DownloadIcon from '@mui/icons-material/Download'; // Import the download icon
 
 // Styled Box for the content area to match your existing design
 // This component provides the background, padding, border-radius, and shadow
@@ -12,7 +11,7 @@ const ResumeContainer = styled(Box)(({ theme }) => ({
   borderRadius: theme.shape.borderRadius * 2, // Equivalent to Tailwind's rounded-xl
   boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2)', // Equivalent to Tailwind's shadow-2xl
   textAlign: 'center', // Center align text within the container
-  maxWidth: '64rem', // Increased from '48rem' to '64rem' (e.g., Tailwind's max-w-5xl)
+  maxWidth: '80rem', // Increased from 64rem to 80rem for a wider resume container
   width: '100%', // Ensures the container takes full width up to maxWidth
   minHeight: '70vh', // Sets a minimum height to ensure it takes up significant screen space
   display: 'flex', // Use flexbox for internal layout
@@ -20,6 +19,7 @@ const ResumeContainer = styled(Box)(({ theme }) => ({
   alignItems: 'center', // Center children horizontally
   justifyContent: 'center', // Center content vertically within the container
   color: '#f9fafb', // Equivalent to Tailwind's gray-100 for text color
+  marginLeft: '240px',
 }));
 
 // Styled iframe for embedding the PDF resume
@@ -34,25 +34,25 @@ const PDFViewer = styled('iframe')({
 
 // ResumePage component displays a welcome message, a download button, and an embedded PDF.
 const ResumePage: React.FC = () => {
-  // Define the path to your resume PDF.
-  // This assumes 'Maneesh_Resume.pdf' is placed directly in the 'public' folder of your React project.
-  const resumePath = '/Maneesh_Resume.pdf';
+  // Path to the PDF in the assets folder (Vite will copy it to dist)
+  const resumePath = '/src/assets/Maneesh_Resume.pdf';
 
   return (
     // Outer Box for the entire page, providing the background gradient and centering
     <Box
       sx={{
+        left: 0,
         minHeight: '100vh', // Ensures the background covers the entire viewport height
         display: 'flex', // Use flexbox for centering the ResumeContainer
         flexDirection: 'column', // Arrange children vertically
-        alignItems: 'center', // Center children horizontally
+        alignItems: 'flex-start', // Center horizontally
         justifyContent: 'center', // Center children vertically
         background: 'linear-gradient(to bottom right, #111827, #374151)', // Dark gradient background
         p: 2, // Padding around the entire page
       }}
     >
       {/* The main container for the resume content */}
-      <ResumeContainer>
+      <ResumeContainer sx={{ mx: { xs: 2, sm: 4, md: 8 } }}>
         {/* Page Title */}
         <Typography
           variant="h4" // Material-UI heading variant
@@ -70,25 +70,19 @@ const ResumePage: React.FC = () => {
 
         {/* Introductory text */}
         <Typography variant="body1" sx={{ mb: 2, color: '#d1d5db' }}>
-          Here's a preview of my resume. You can also download it directly.
+          You can preview and download my resume below.
         </Typography>
 
         {/* Download Button */}
-        <IconButton
-          href={resumePath} // Link to the PDF file
-          download="Maneesh_Resume.pdf" // Suggests a filename when downloaded
-          color="primary" // Uses the primary color from the MUI theme
-          sx={{
-            backgroundColor: '#2563eb', // Equivalent to Tailwind's blue-600
-            '&:hover': { backgroundColor: '#1d4ed8' }, // Darker blue on hover
-            px: 3, // Horizontal padding
-            py: 1.5, // Vertical padding
-            borderRadius: '8px', // Rounded corners
-            color: 'white', // White text color
-          }}
+        <Button
+          variant="contained"
+          color="primary"
+          href={resumePath}
+          download="Maneesh_Resume.pdf"
+          sx={{ mb: 3, fontWeight: 'bold', borderRadius: 2, textTransform: 'none', px: 4, py: 1.5 }}
         >
-          <DownloadIcon sx={{ mr: 1 }} /> Download Resume {/* Download icon with right margin */}
-        </IconButton>
+          Download Resume
+        </Button>
 
         {/* PDF Viewer iframe */}
         {/* The src attribute points to the PDF file in the public folder. */}
